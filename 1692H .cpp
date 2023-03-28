@@ -49,83 +49,62 @@ void solve()
         mp[aarray[i]].push_back(i);
 
     }
-
     ans=0;
-ll st,en;
+    ll st,en;
     for(auto it:mp)
     {
-        k=it.first;
-        l=mp[k][0];
-        p=1;
-        q=p;
-
-        for(i=1; i<(ll)mp[k].size(); i++)
+        a=it.first;
+        b=0;
+        p=0;
+        for(j=0; j<mp[a].size(); j++)
         {
-            r=mp[k][i];
-            if(r-1==l)
-            {
-                p++;
-            }
-            else
-            {
-                p++;
-                p-=(r-l-1);
-            }
-            //cout<<k<<" "<<l<<" "<<r<<" "<<p<<"\n";
-            l=r;
-            q=max(q,p);
-            p=max(0LL,p);
-
-            // cout<<k<<" "<<r<<" "<<q<<"\n";
+            b++;
+            if(j!=0){
+            c=mp[a][j]-mp[a][j-1]-1;
+            b-=c;}
+            b=max(b,1LL);
+            p=max(p,b);
         }
-        //cout<<k<<" "<<q<<"\n";
-        if(q>ans)
+      //  cout<<p<<" "<<
+        if(p>ans)
         {
-            ans=q;
-            a=k;
+            ans=p;
+            q=a;
         }
     }
-    l=mp[a][0];
-    p=1;
-    en=l;
-    for(i=1; i<(ll)mp[k].size(); i++)
+    b=0;
+    p=0;
+    for(j=0; j<mp[q].size(); j++)
     {
-        r=mp[k][i];
-        if(r-1==l)
+        b++;
+        if(j!=0){
+        c=mp[q][j]-mp[q][j-1]-1;
+        b-=c;}
+        b=max(b,1LL);
+        p=max(p,b);
+        if(p==ans)
         {
-            p++;
-        }
-        else
-        {
-            p++;
-            p-=(r-l-1);
-        }
-        //cout<<k<<" "<<l<<" "<<r<<" "<<p<<"\n";
-        l=r;
-        q=max(q,p);
-        p=max(0LL,p);
-        if(q==ans)
-        {
-            en=r;
-            break;
-        }
-        // cout<<k<<" "<<r<<" "<<q<<"\n";
-    }
-
-    for(i=en;i>=1;i--)
-    {
-        if(aarray[i]==a)
-        {
-            ans--;
-        }
-        else ans++;
-        if(ans==0)
-        {
-            st=i;
+            en=mp[q][j];
             break;
         }
     }
-    cout<<a<<" "<<st<<" "<<en<<"\n";
+    sum=0;
+    for(j=en;j>=1;j--)
+    {
+        if(aarray[j]==q)
+        {
+            sum++;
+        }
+        else sum--;
+        if(sum==ans)
+        {
+            st=j;
+            break;
+        }
+    }
+    cout<<q<<" "<<st<<" "<<en<<"\n";
+    //cout<<ans<<"\n";
+
 }
 int main()
 {
