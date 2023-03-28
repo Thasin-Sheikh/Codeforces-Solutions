@@ -1,0 +1,32 @@
+///*Bismillahir Rahmanir Rahim***///
+///**Author Thasin Sheikh**///
+#include<bits/stdc++.h>
+using namespace std;
+long long int po[1005][10];
+vector<int>primes;
+#define MAX 35000
+#define makefast__  ios_base::sync_with_stdio(false);
+using ll=long long int  ;
+using dl =double;
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    makefast__
+    string str,ptr,ps[1001],s[1001];
+    ll n,m,a,j,k,i,p,l=1,u=0,r=0,c,array[200000+10],d;
+    set<ll>ds;
+    char ch;
+    cin>>n>>m;
+    for(i=0;i<n;i++)
+        cin>>array[i];
+    for(i=0;i<n;i++)
+    {
+        u=u+array[i];
+        l=u/m;
+        u=u%m;
+        array[i]=l;
+    }
+    for(i=0;i<n;i++)
+        cout<<array[i]<<" ";
+}
